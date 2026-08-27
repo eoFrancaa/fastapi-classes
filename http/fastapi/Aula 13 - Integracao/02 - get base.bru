@@ -1,0 +1,23 @@
+meta {
+  name: 02 - GET base (regressão)
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseUrl}}/api/produtos/
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+  res.body.page: eq 1
+  res.body.page_size: eq 10
+  res.body.total_pages: eq 6
+  res.body.results.length: eq 10
+}
+
+docs {
+Regressão do GET paginado — 6 páginas para o dataset-base de 60.
+}
